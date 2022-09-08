@@ -15,7 +15,10 @@ export const sendScheduleMessage = async (interaction: any) => {
     .setTimestamp();
 
   feed.items.forEach((item: any) => {
-    helpEmbed.addFields({ name: item.title, value: item.link });
+    helpEmbed.addFields({
+      name: item.title.replace("&#039;", "'"),
+      value: item.link,
+    });
   });
   // Send help embed
   await interaction.reply({ embeds: [helpEmbed] });
